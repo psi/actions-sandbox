@@ -18,4 +18,4 @@ jobs:
       - job_a
       - job_b
     steps:
-      - run: echo ${{ toJson(needs) }}
+      - run: echo '${{ toJson(needs) }}'
