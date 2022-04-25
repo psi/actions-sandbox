@@ -5,12 +5,15 @@ on:
 
 jobs:
   job_a:
+    runs-on: ubuntu-latest
     steps:
       - run: exit 0
   job_b:
+    runs-on: ubuntu-latest
     steps:
       - run: exit 0
   notify:
+    runs-on: ubuntu-latest
     needs:
       - job_a
       - job_b
