@@ -18,4 +18,13 @@ jobs:
       - job_a
       - job_b
     steps:
-      - run: echo '${{ toJson(needs) }}'
+      - if: ${{ Object.entries(needs).filter(e => e[1]['result'] != 'success').length > 0}}
+        run: echo failed
+
+#           allJobsSucceeded=$(echo '${{ toJson(needs) }}' | jq '. | with_entries( select(.value.result != "success") ) | length == 0')
+#           if [ $allJobsSucceeded != "0" ];
+#           then
+#             echo "::set-output name=status::failure"
+#           else
+#             echo "::set-output name=status::success"
+#           fi
